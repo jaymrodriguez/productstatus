@@ -1,0 +1,146 @@
+body {
+  background-color: rgb(251,246,237);
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  &:visited {
+    color: #666;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+.header nav a {
+  float:right;
+  padding:4px;
+  border-radius:4px;
+  background-color:blue;
+  text-decoration:none;
+  color:#FFF;
+}
+
+/* Styling button */
+ 
+a.button, {
+    color:white;
+    padding:5px 20px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:15px;
+    text-align:center;
+    float:left;
+    clear:both;
+
+}
+ 
+a.button:hover{
+    /* Lighter gradients for the hover effect */
+    text-decoration:none;
+    background-color: #F902B6;
+    background-image: -moz-linear-gradient(#6bbbe9, #57a5d4);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6bbbe9), to(#57a5d4));
+
+}
+
+
+/* analytics */
+
+.pathWrapper {
+    padding:1em;
+    margin: 1em;
+    clear:both;
+    border-bottom:1px solid #eee8d5;
+    }
+    .breakdown {
+        float:left;
+        }
+    .graph {
+        margin-left:300px;
+        }
+
+#ga-table > li {
+  list-style-type: none;
+  overflow: hidden;
+}
+#ga-table > li > * {
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 5px;
+}
+
+.c1, .c2 {
+  width: 90px;
+}
+input {
+  display: inline;
+}
+.note {
+  margin-left: 10px !important;
+  color: #777;
+}
+
+svg {
+  height:600px;
+}
+
+
+
+

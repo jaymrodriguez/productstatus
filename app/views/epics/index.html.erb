@@ -1,0 +1,26 @@
+<section class="header">
+  <nav><%= link_to 'New Epic', new_epic_path, :class=>"button" %></nav>
+  <h1>Listing epics</h1> 
+</section>
+
+
+<table cellpadding=5 cellspacing =0 border=1>
+  <tr>
+    <th>Epic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @epics.each do |epic| %>
+  <tr>
+    <td><%= epic.epic %></td>
+    <td><%= link_to 'Show', epic %></td>
+    <td><%= link_to 'Edit', edit_epic_path(epic) %></td>
+    <td><%= link_to 'Destroy', epic, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

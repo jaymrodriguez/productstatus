@@ -1,0 +1,28 @@
+#nav {
+	background: #efefef;
+	border-bottom: 1px solid #CCC;
+}
+
+#nav ul {
+	width:960px;
+	margin: 0px auto;
+	height: 2em;
+}
+
+#nav li {	
+	float: left;
+	padding: 2px 4px;
+	list-style: none;
+	}
+
+
+#nav li a {
+	text-decoration: none;
+	padding:1px 2px;
+	display:block;
+}
+
+.link-na {	
+	font-style: italic;
+	color:#DEDEDE;	
+}

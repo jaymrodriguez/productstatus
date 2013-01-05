@@ -1,0 +1,41 @@
+<h1>Analytics</h1>
+<button id="authorize-button" style="visibility: hidden">Authorize</button>
+
+Start Date: <input id="start-date" class="c2"></input> 
+End Date: <input id="end-date" class="c2"></input> 
+<button id="refresh-button" style="visibility: hidden">Refresh</button>
+<br />&nbsp;<br />
+<div id="info"></div>
+<div class="chart-container"><button id="homepage-button" style="visibility: hidden">Refresh Homepage</button>
+  <svg id="homepage"></svg>
+</div>
+<div class="chart-container"><button id="k12-button" style="visibility: hidden">Refresh k12</button>
+  <svg id="k12"></svg>
+</div>
+<div class="chart-container"><button id="college-button" style="visibility: visible">Refresh College</button>
+  <svg id="college"></svg>
+</div>
+<div class="chart-container"><button id="mba-button" style="visibility: visible">Refresh MBA</button>
+  <svg id="mba"></svg>
+</div>
+
+<div id="charts"></div>
+
+
+
+<%= javascript_include_tag "analytics/nvd3/lib/d3.v2.js" %>
+<%= javascript_include_tag "analytics/nvd3/nv.d3.js" %>
+<%= javascript_include_tag "analytics/nvd3/src/models/axis.js" %>
+<%= javascript_include_tag "analytics/nvd3/src/tooltip.js" %>
+<%= javascript_include_tag "analytics/nvd3/src/models/legend.js" %>
+<%= javascript_include_tag "analytics/nvd3/src/models/axis.js" %>
+<%= javascript_include_tag "analytics/nvd3/src/models/scatter.js" %>
+<%= javascript_include_tag "analytics/nvd3/src/models/stackedArea.js" %>
+<%= javascript_include_tag "analytics/nvd3/src/models/stackedAreaChart.js" %>
+<%= javascript_include_tag "analytics/homepull.js" %>
+<%= javascript_include_tag "analytics/k12pull.js" %>
+<%= javascript_include_tag "analytics/collegepull.js" %>
+<%= javascript_include_tag "analytics/auth_util.js" %>
+<%= javascript_include_tag "analytics/core_reporting.js" %>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad" type="text/javascript"></script>
+

@@ -1,0 +1,43 @@
+<section class="header">
+  <nav><%= link_to 'New Story', new_story_path, :class=>"button" %></nav>
+  <h1>Product Development Updates</h1> 
+</section>
+ 
+<table cellpadding=5 cellspacing =0 border=1>
+  <tr>
+    <th><%= link_to "Story", :sort => "story" %></th>
+    <th><%= link_to "Epic", :sort => "epic" %></th>
+    <th><%= link_to "Team", :sort => "team" %></th>
+    <th><%= link_to "Goal", :sort => "goal" %></th>
+    <th><%= link_to "Area", :sort => "area" %></th>
+    <th><%= link_to "Wag", :sort => "wag" %></th>
+    <th><%= link_to "Eta", :sort => "eta" %></th>
+    <th><%= link_to "Actual", :sort => "actual" %></th>
+    <th><%= link_to "Status", :sort => "status" %></th>
+    <th>Comments</th>
+    <th></th>
+  </tr>
+
+<% @stories.each do |story| %>
+  <tr>
+     <td>
+			<a id="editmestory<%=story.id%>" href="#">edit</a><br>
+			 <%= best_in_place story, :story, :type => :textarea, :activator => "#editmestory" + story.id.to_s() %>
+		</td>
+    <td><%= story.epic.epic %></td>
+    <td><%= story.team.team %></td>
+    <td><%= story.goal.goal %></td>
+    <td><%= story.area.area %></td>
+    <td><%= story.wag %></td>
+    <td><%= story.eta %></td>
+    <td><%= story.actual %></td>
+    <td><%= story.status.status %></td>
+    <td>
+		<a id="editmecomments<%=story.id%>" href="#">new</a><br>
+		 <%= best_in_place story, :comments, :type => :textarea, :activator => "#editmecomments" + story.id.to_s() %>
+	</td>
+    <td><%= link_to 'View', story %>|<%= link_to 'Edit', edit_story_path(story) %>|<%= link_to 'Delete', story, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

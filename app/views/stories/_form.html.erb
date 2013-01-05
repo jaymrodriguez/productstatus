@@ -1,0 +1,72 @@
+<%= form_for(@story) do |f| %>
+  <% if @story.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+      <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<section>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.collection_select(:status_id, Status.all, :id, :status) %>
+  </div>
+  <div class="field inline-field">
+    <%= f.label :eta %>
+    <%= f.date_select :eta %>
+  </div>
+  <div class="field inline-field">
+    <%= f.label :actual %>
+    <%= f.date_select :actual %>
+  </div>
+</section>
+<section>
+  <div class="field inline-field" id="edit-story-wrapper">
+    <%= f.label :story %>
+    <%= f.text_area :story %>
+  </div>
+
+  <div class="field inline-field" id="edit-comment-wrapper">
+    <%= f.label :comments %>
+    <%= f.text_area :comments %>
+  </div>
+</section>
+<section>
+  <div class="field inline-field">
+    <%= f.label :epic %>
+    <%= f.collection_select(:epic_id, Epic.all, :id, :epic) %>
+  </div>
+  <div class="field inline-field">
+    <%= f.label :team %>
+    <%= f.collection_select(:team_id, Team.all, :id, :team) %>
+  </div>
+</section>
+<section>
+  <div class="field inline-field">
+    <%= f.label :wag %>
+    <%= f.number_field :wag %>
+  </div>
+  <div class="field inline-field">
+    <%= f.label :goal %>
+    <%= f.collection_select(:goal_id, Goal.all, :id, :goal) %>
+  </div>
+  <div class="field inline-field">
+    <%= f.label :area %>
+    <%= f.collection_select(:area_id, Area.all, :id, :area) %>
+  </div>
+</section>
+<section>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+</section>
+<% end %>

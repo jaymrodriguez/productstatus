@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Story:</b>
+  <%= @story.story %>
+</p>
+
+<p>
+  <b>Epic:</b>
+  <%= @story.epic.epic %>
+</p>
+
+<p>
+  <b>Team:</b>
+  <%= @story.team.team %>
+</p>
+
+<p>
+  <b>Goal:</b>
+  <%= @story.goal.goal %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @story.area.area %>
+</p>
+
+<p>
+  <b>Wag:</b>
+  <%= @story.wag %>
+</p>
+
+<p>
+  <b>Eta:</b>
+  <%= @story.eta %>
+</p>
+
+<p>
+  <b>Actual:</b>
+  <%= @story.actual %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @story.status.status %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @story.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_story_path(@story) %> |
+<%= link_to 'Back', stories_path %>

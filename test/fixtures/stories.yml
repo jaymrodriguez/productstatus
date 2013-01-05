@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  story: MyText
+  epic: 
+  team: 
+  goal: 
+  area: 
+  wag: 1
+  eta: 2012-08-22
+  actual: 2012-08-22
+  status: 
+  comments: MyText
+
+two:
+  story: MyText
+  epic: 
+  team: 
+  goal: 
+  area: 
+  wag: 1
+  eta: 2012-08-22
+  actual: 2012-08-22
+  status: 
+  comments: MyText

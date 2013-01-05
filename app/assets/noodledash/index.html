@@ -1,0 +1,56 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>Core Reporting API v3 Reference Example</title>
+  <link rel="stylesheet" type="text/css"
+      href="//fonts.googleapis.com/css?family=Cantarell|Inconsolata">
+	  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="pretty.css">
+	<link href="nvd3/src/d3.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<button id="authorize-button" style="visibility: hidden">Authorize</button>
+
+Start Date: <input id="start-date" class="c2"></input> 
+End Date: <input id="end-date" class="c2"></input> 
+<button id="refresh-button" style="visibility: hidden">Refresh</button>
+<br />&nbsp;<br />
+<div id="info"></div>
+<div class="chart-container"><button id="homepage-button" style="visibility: hidden">Refresh Homepage</button>
+  <svg id="homepage"></svg>
+</div>
+<div class="chart-container"><button id="k12-button" style="visibility: hidden">Refresh k12</button>
+  <svg id="k12"></svg>
+</div>
+<div class="chart-container"><button id="college-button" style="visibility: visible">Refresh College</button>
+  <svg id="college"></svg>
+</div>
+<div class="chart-container"><button id="mba-button" style="visibility: visible">Refresh MBA</button>
+  <svg id="mba"></svg>
+</div>
+
+<div id="charts"></div>
+
+
+
+<script src="nvd3/lib/d3.v2.js"></script>
+<script src="nvd3/nv.d3.js"></script>
+<script src="nvd3/src/models/axis.js"></script>
+<script src="nvd3/src/tooltip.js"></script>
+<script src="nvd3/src/models/legend.js"></script>
+<script src="nvd3/src/models/axis.js"></script>
+<script src="nvd3/src/models/scatter.js"></script>
+<script src="nvd3/src/models/stackedArea.js"></script>
+<script src="nvd3/src/models/stackedAreaChart.js"></script>
+<script src="homepull.js"></script>
+<script src="k12pull.js"></script>
+<script src="collegepull.js"></script>
+<script src="auth_util.js"></script>
+<script src="core_reporting.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+
+<section class="header">
+  <nav><%= link_to 'New Area', new_area_path, :class=>"button" %></nav>
+  <h1>Listing Areas</h1> 
+</section>
+
+
+<table cellpadding=5 cellspacing =0 border=1>
+  <tr>
+    <th>Area</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @areas.each do |area| %>
+  <tr>
+    <td><%= area.area %></td>
+    <td><%= link_to 'Show', area %></td>
+    <td><%= link_to 'Edit', edit_area_path(area) %></td>
+    <td><%= link_to 'Destroy', area, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+

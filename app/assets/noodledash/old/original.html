@@ -1,0 +1,172 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>Noodle Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+
+  <!-- Add Google Analytics authorization button -->
+  <button id="authorize-button" style="visibility: hidden">
+        Authorize Analytics</button>
+
+  <!-- Div element where the Line Chart will be placed -->
+<div class="pathWrapper">
+  <div id='homeBreakdown' class="breakdown"></div>
+ 
+  <div class="graph" id='home'></div>
+  <div class="graph" id='homeToWizard'></div>
+  <div class="graph" id='homeToWizardAndProfile'></div>
+</div> 
+<div class="pathWrapper">
+  <div id='k12Breakdown' class="breakdown"></div>
+  <div class="graph" id='k12'></div>
+  <div class="graph" id='k12ToWizard'></div>
+  <div class="graph" id='k12ToWizardAndProfile'></div>
+</div>
+
+
+
+
+
+  <!-- Load all Google JS libraries -->
+  <script src="https://www.google.com/jsapi"></script>
+  <script src="ga-dash.js"></script>
+  <script src="https://apis.google.com/js/client.js?onload=gadashInit"></script>
+  <script>
+    // Configure these parameters before you start.
+    var API_KEY = 'AIzaSyB9qvIVLADIU7AzG_5FHtyp5i8wR6EXeB4';
+    var CLIENT_ID = '49727137637.apps.googleusercontent.com';
+    var TABLE_ID = 'ga:55161573';
+    // Format of table ID is ga:xxx where xxx is the profile ID.
+
+    gadash.configKeys({
+      'apiKey': API_KEY,
+      'clientId': CLIENT_ID
+    });
+
+//////////////
+
+/**
+ * Execute a query to the Core Reporting API to retrieve the top 25
+ * organic search terms by visits for the profile specified by profileId.
+ * Once complete, handleCoreReportingResults is executed.
+ * @param {String} profileId The profileId specifying which profile to query.
+ */
+function queryCoreReportingApi(profileId) {
+  updatePage('Querying Core Reporting API.');
+  gapi.client.analytics.data.ga.get({
+    'ids': 'ga:' + profileId,
+    'start-date': lastNDays(14),
+    'end-date': lastNDays(0),
+    'metrics': 'ga:visits',
+    'dimensions': 'ga:source,ga:keyword',
+    'sort': '-ga:visits,ga:source',
+    'filters': 'ga:medium==organic',
+    'max-results': 25
+  }).execute(handleCoreReportingResults);
+}
+
+
+/**
+ * Handles the API reponse for querying the Core Reporting API. This first
+ * checks if any errors occured and prints the error messages to the screen.
+ * If sucessful, the profile name, headers, result table are printed for the
+ * user.
+ * @param {Object} response The reponse returned from the Core Reporting API.
+ */
+function handleCoreReportingResults(response) {
+  if (!response.code) {
+    if (response.rows && response.rows.length) {
+      var output = [];
+
+      // Profile Name.
+      output.push('Profile Name: ', response.profileInfo.profileName, '<br>');
+
+      var table = ['<table>'];
+
+      // Put headers in table.
+      table.push('<tr>');
+      for (var i = 0, header; header = response.columnHeaders[i]; ++i) {
+        table.push('<th>', header.name, '</th>');
+      }
+      table.push('</tr>');
+
+      // Put cells in table.
+      for (var i = 0, row; row = response.rows[i]; ++i) {
+        table.push('<tr><td>', row.join('</td><td>'), '</td></tr>');
+      }
+      table.push('</table>');
+
+      output.push(table.join(''));
+      outputToPage(output.join(''));
+    } else {
+      outputToPage('No results found.');
+    }
+  } else {
+    updatePage('There was an error querying core reporting API: ' +
+        response.message);
+  }
+}
+
+
+/**
+ * Utility method to update the output section of the HTML page. Used
+ * to output messages to the user. This overwrites any existing content
+ * in the output area.
+ * @param {String} output The HTML string to output.
+ */
+function outputToPage(output) {
+  document.getElementById('output').innerHTML = output;
+}
+
+
+/**
+ * Utility method to update the output section of the HTML page. Used
+ * to output messages to the user. This appends content to any existing
+ * content in the output area.
+ * @param {String} output The HTML string to output.
+ */
+function updatePage(output) {
+  document.getElementById('output').innerHTML += '<br>' + output;
+}
+
+
+//////////////
+
+
+      // Base chart configuration. Used for all charts.
+  var baseConfig = {
+    'last-n-days': 30,
+    'chartOptions': {
+      height:100,
+      curveType: 'linear',
+      colors: ['#859900', '#2aa198', '#268bd2', '#6c71c4', '#d33682'],
+      backgroundColor: '#FBF6ED'
+    }
+  };
+
+        
+// Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+        // Set breakdown chart options
+        var breakdownOptions = {
+                    'title':'Traffic Breakdown',
+                    'width':300,
+                    'height':300,
+                    'colors': ['#2aa198', '#859900', '#268bd2', '#6c71c4', '#d33682'],
+                    'backgroundColor': '#FBF6ED'
+                    };
+
+
+
+
+  </script>
+  <script src="k12.js"></script>
+  <script src="home.js"></script>
+
+  
+</body>
+</html>
